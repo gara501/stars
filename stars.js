@@ -11,39 +11,46 @@ var points = (function () {
   };
 
   var colors = [{
+                 id: 1,
                  name: 'Alnitak',
                  color: '#f2c76b',
-                 definition: ''
+                 definition: 'Estrellas rojizas'
                 },
                 {
+                 id: 2,
                  name: 'Rigel',
                  color: '#f2ce9c',
-                 definition: ''
+                 definition: 'Estrellas anaranjadas'
                 },
                 {
+                 id: 3,
                  name: 'Sirio',
                  color: '#f8f2e6',
-                 definition: ''
+                 definition: 'Estrellas amarillo pálido'
                 },
                 {
+                 id: 4,
                  name: 'Canopo',
                  color: '#f8f1e7',
-                 definition: ''
+                 definition: 'Estrellas amarillas '
                 },
                 {
+                 id: 5,
                  name: 'Sol',
                  color: '#f6f6f8',
-                 definition: ''
+                 definition: 'Estrellas azul pálido'
                 },
                 {
+                 id: 6,
                  name: 'Epsilon Eridani',
                  color: '#c1d1e8',
-                 definition: ''
+                 definition: 'Estrellas Azules'
                 },
                 {
+                 id: 7,
                  name: 'Proxima Centauri',
                  color: '#abbbdc',
-                 definition: ''
+                 definition: 'Estrellas azules violaceas'
                 }
                ];
 
@@ -80,6 +87,19 @@ var points = (function () {
     return animation;
   }
 
+  var remark = function(point) {
+    var remarkEl = document.querySelectorAll('.legend ul li');
+    point.addEventListener('mouseover', function() {
+      var ulId = parseInt(point.dataset.id, 10) - 1;
+      remarkEl[ulId].style.color = 'red';
+    });
+
+    point.addEventListener('mouseout', function() {
+      var ulId = parseInt(point.dataset.id, 10) - 1;
+      remarkEl[ulId].style.color = point.dataset.color;
+    });
+  };
+
   var putPoint = function (point) {
     var leftPos = getRandomPosition(1, containerWidth);
     var topPos = getRandomPosition(1, containerHeight);
@@ -88,6 +108,7 @@ var points = (function () {
     point.style.top = topPos + "px";
     point.classList.add(animation);
     container.appendChild(point);
+    remark(point);
   };
 
   var newPoint =  {
@@ -97,7 +118,8 @@ var points = (function () {
       var opacity = getRandomOpacity();
       point.style.backgroundColor = colors[color].color;
       point.style.opacity = opacity;
-      point.setAttribute('data-name', 'estrella');
+      point.setAttribute('data-id', colors[color].id);
+      point.setAttribute('data-color', colors[color].color);
       point.classList.add('fly');
       putPoint(point);
     },
@@ -112,6 +134,7 @@ var points = (function () {
         }
       }, 10);
     },
+
     stop: function() {
       startInterval.classList.add('stopped');
     }
