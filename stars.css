@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  background-color: #000;
+  height: 100%;
+  min-height: 100%;
+  font-family: lato, arial;
+  overflow: hidden;
+}
+
+.main {
+ display: block;
+ height: 100%;
+ min-height: 100%;
+ width: 100%;
+ overflow: hidden;
+}
+
+.point {
+  height: 2px;
+  width: 2px;
+  position: absolute;
+}
+
+.legend {
+  background-color: #2a2052;
+  bottom: 0;
+  padding: 1rem;
+  position: absolute;
+  width: 16rem;
+  z-index: 1;
+}
+
+.legend h3 {
+  color: yellow;
+  font-size: 1.3rem;
+}
+
+.legend ul {
+  padding: 0;
+  margin: .5rem;
+}
+
+.legend ul li {
+  color: white;
+  font-size: .8rem;
+}
+
+.fly {
+   animation-duration: 10s;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  transform-origin: center;
+}
+
+.flytl {
+   animation-name: topleft;
+}
+
+.flytr {
+   animation-name: topright;
+}
+
+.flybl {
+   animation-name: bottomleft;
+}
+
+.flybr {
+   animation-name: bottomright;
+}
+
+@keyframes topleft {
+  from {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+
+  }
+
+  to {
+    -webkit-transform: translate(-3, -1.5rem);
+    transform: translate(-3rem, -1.5rem);
+  }
+}
+
+@keyframes topright {
+  from {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+
+  }
+
+  to {
+    -webkit-transform: translate(3rem, -1.5rem);
+    transform: translate(3rem, -1.5rem);
+  }
+}
+
+@keyframes bottomleft {
+  from {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+
+  }
+
+  to {
+    -webkit-transform: translate(3rem, 1.5rem);
+    transform: translate(3rem, 1.5rem);
+  }
+}
+
+@keyframes bottomright {
+  from {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+
+  }
+
+  to {
+    -webkit-transform: translate(-3rem, 1.5rem);
+    transform: translate(-3rem, 1.5rem);
+  }
+}
+
+.legend ul li:nth-of-type(7) {
+  color: #abbbdc;
+}
+
+.legend ul li:nth-of-type(6) {
+  color: #c1d1e8;
+}
+
+.legend ul li:nth-of-type(5) {
+  color: #f6f6f8;
+}
+
+.legend ul li:nth-of-type(4) {
+  color: #f8f1e7;
+}
+
+.legend ul li:nth-of-type(3) {
+  color: #f8f2e6;
+}
+
+.legend ul li:nth-of-type(2) {
+  color: #f2ce9c;
+}
+
+.legend ul li:nth-of-type(1) {
+  color: #f2c76b;
+}
