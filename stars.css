@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-
 }
 
 body {
@@ -10,6 +9,11 @@ body {
   min-height: 100%;
   font-family: lato, arial;
   overflow: hidden;
+}
+
+button {
+  margin: .2rem;
+  padding: .3rem;
 }
 
 .main {
@@ -24,9 +28,10 @@ body {
   height: 2px;
   width: 2px;
   position: absolute;
+  perspective: 600rem;
 }
 
-.legend {
+.legend, .tooltip {
   background-color: #2a2052;
   bottom: 0;
   padding: 1rem;
@@ -35,30 +40,43 @@ body {
   z-index: 1;
 }
 
-.legend h3 {
+.legend h3, .tooltip h3 {
   color: yellow;
   font-size: 1.3rem;
 }
 
-.legend ul {
+.legend ul, .tooltip ul {
   padding: 0;
   margin: .5rem;
 }
 
-.legend ul li {
+.legend ul li, .tooltip ul li {
   color: white;
   font-size: .8rem;
+}
+
+.tooltip {
+  display: none;
+  right: 0;
+
 }
 
 .fly {
    animation-duration: 10s;
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
+  -webkit-transform-origin: center;
   transform-origin: center;
 }
 
+.elipse {
+  animation: round 2s infinite linear;
+}
+
 .flytl {
-   animation-name: topleft;
+   // animation-name: topleft;
+   animation-name: girar;
+
 }
 
 .flytr {
@@ -73,11 +91,21 @@ body {
    animation-name: bottomright;
 }
 
+@keyframes round {
+ from {
+   transform: rotate(0deg)  translate(-.1rem) rotate(0deg);
+   -webkit-transform: rotate(0deg)  translate(-8rem) rotate(0deg);
+  }
+ to {
+   transform: rotate(360deg) translate(-.1rem) rotate(-360deg);
+   -webkit-transform: rotate(360deg) translate(-8rem) rotate(-360deg);
+  }
+}
+
 @keyframes topleft {
   from {
     -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
-
   }
 
   to {
@@ -151,4 +179,49 @@ body {
 
 .legend ul li:nth-of-type(1) {
   color: #f2c76b;
+}
+
+.planet {
+  width:100px;
+	height:100px;
+  background: url(https://gara501.github.io/stars/textures/mercury.png);
+	border-radius:120px;
+	background-size: 374px;
+	background-color:#FFF;
+  position: absolute;
+	transform: rotate(20deg);
+	-webkit-transform: rotate(20deg);
+  animation-name: rotate;
+ animation-duration: 25s; /* or: Xms */
+ animation-iteration-count: infinite;
+ animation-direction: normal; /* or: normal */
+ animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+ animation-fill-mode: forwards; /* or: backwards, both, none */
+ animation-delay: 2s; /* or: Xms */
+
+
+}
+.planet-texture {
+box-shadow: inset 2px 8px 10px rgba(255,255,255,0.7),
+inset -19px -19px 70px rgba(0,0,0,0.9),
+inset -5px -5px 8px rgba(0,0,0,0.7),
+-5px -5px 10px 1px rgba(255,255,255,0.5),
+5px 5px 30px 1px rgba(0,150,255,0.5);
+}
+
+@keyframes rotate {
+  from {background-position:100% 0;}
+  to {background-position:-39% 0;}
+}
+@-webkit-keyframes rotate {
+  from {background-position:100% 0;}
+  to {background-position:-39% 0;}
+}
+@-moz-keyframes rotate {
+  from {background-position:100% 0;}
+  to {background-position:-39% 0;}
+}
+@-o-keyframes rotate {
+  from {background-position:100% 0;}
+  to {background-position:-39% 0;}
 }
