@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background-color: #000;
   height: 100%;
@@ -26,7 +31,7 @@ button {
   perspective: 600rem;
 }
 
-.legend {
+.legend, .tooltip {
   background-color: #2a2052;
   bottom: 0;
   padding: 1rem;
@@ -35,19 +40,25 @@ button {
   z-index: 1;
 }
 
-.legend h3 {
+.legend h3, .tooltip h3 {
   color: yellow;
   font-size: 1.3rem;
 }
 
-.legend ul {
+.legend ul, .tooltip ul {
   padding: 0;
   margin: .5rem;
 }
 
-.legend ul li {
+.legend ul li, .tooltip ul li {
   color: white;
   font-size: .8rem;
+}
+
+.tooltip {
+  display: none;
+  right: 0;
+
 }
 
 .fly {
@@ -180,14 +191,15 @@ button {
   position: absolute;
 	transform: rotate(20deg);
 	-webkit-transform: rotate(20deg);
-	animation: rotate 25s infinite linear;
-	-webkit-animation: rotate 25s infinite linear;
-	-moz-animation: rotate 25s infinite linear;
-  -o-animation: rotate 25s infinite linear;
-  animation-fill-mode: forwards;
-  	-webkit-animation-fill-mode: forwards;
-	-moz-animation-fill-mode: forwards;
-  -o-animation-fill-mode: forwards;
+  animation-name: rotate;
+ animation-duration: 25s; /* or: Xms */
+ animation-iteration-count: infinite;
+ animation-direction: normal; /* or: normal */
+ animation-timing-function: linear; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+ animation-fill-mode: forwards; /* or: backwards, both, none */
+ animation-delay: 2s; /* or: Xms */
+
+
 }
 .planet-texture {
 box-shadow: inset 2px 8px 10px rgba(255,255,255,0.7),
@@ -198,18 +210,18 @@ inset -5px -5px 8px rgba(0,0,0,0.7),
 }
 
 @keyframes rotate {
-  from {background-position:0 0;}
-  to {background-position:400px 0;}
+  from {background-position:100% 0;}
+  to {background-position:-39% 0;}
 }
 @-webkit-keyframes rotate {
-  from {background-position:0 0;}
-  to {background-position:400px 0;}
+  from {background-position:100% 0;}
+  to {background-position:-39% 0;}
 }
 @-moz-keyframes rotate {
-  from {background-position:0 0;}
-  to {background-position:400px 0;}
+  from {background-position:100% 0;}
+  to {background-position:-39% 0;}
 }
 @-o-keyframes rotate {
-  from {background-position:0 0;}
-  to {background-position:400px 0;}
+  from {background-position:100% 0;}
+  to {background-position:-39% 0;}
 }
